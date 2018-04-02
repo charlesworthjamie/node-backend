@@ -12,9 +12,9 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 
 const databaseConfig = require('./config/database')
-require('./config/passport')(passport)
-
 mongoose.connect(databaseConfig.url)
+
+require('./config/passport')(passport)
 
 app.use(morgan('dev'))
 app.use(cookieParser())

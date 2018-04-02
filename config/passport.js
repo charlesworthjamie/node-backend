@@ -63,6 +63,8 @@ module.exports = (passport) => {
                     } else {
                         let newUser = new User()
 
+                        newUser.createdAt = Date.now()
+                        newUser.updatedAt = Date.now()
                         newUser.local.email = email
                         newUser.local.password = newUser.generateHash(password)
 

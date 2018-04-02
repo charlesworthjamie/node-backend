@@ -8,10 +8,8 @@ module.exports = (app, passport) => {
         }
     }
 
-    app.get('/profile', isLoggedIn, (req, res) => {
-        return res.send('successful login')
-    })
-
     require('./user')(app, passport)
+    require('./profile')(app, passport)
+    require('./folder')(app, passport)
 
 }
