@@ -31,7 +31,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
 
-require('./routes/routes')(app, passport)
+require('./routes/core')(app, passport)
 
 app.use(errorHandler())
 

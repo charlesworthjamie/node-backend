@@ -4,7 +4,7 @@ const fileSchema = new mongoose.Schema({
     originalName: String,
     url: String,
     type: String,
-    folder: String,
+    fileCollection: String,
     createdBy: String,
     createdAt: Date,
     updatedAt: Date
