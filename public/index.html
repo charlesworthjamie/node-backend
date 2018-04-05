@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Node App</title>
+    </head>
+    <body>
+        <input type="file" multiple="true" id="files"/>
+        <button id="submit">send</button>
+        <script lang="javascript">
+            document.getElementById('submit').addEventListener('click' , function() {
+                const files = [...document.getElementById('files').files]
+
+                files.forEach((file) => {
+                    var formData = new FormData()
+                    var upload = file
+                    formData.append('file-upload', upload)
+                    var xhr = new XMLHttpRequest()
+
+                    xhr.open('post', '/file/upload', true)
+
+                    xhr.upload.onprogress = function(e) {
+                        if (e.lengthComputable) {
+                            var percentage = (e.loaded / e.total) * 100
+                            console.log(percentage + "%")
+                        }
+                    }
+
+                    xhr.onerror = function(e) {
+                        console.log('Error')
+                        console.log(e)
+                    }
+                    xhr.onload = function() {
+                        console.log(this.statusText)
+                    }
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4) {
+                            console.log(xhr.response);
+                        }
+                    }
+
+                    xhr.send(formData)
+                })
+            })
+        </script>
+    </body>
+</html>

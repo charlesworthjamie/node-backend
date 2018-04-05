@@ -11,5 +11,6 @@ module.exports = (app, passport) => {
     require('./user')(app, passport)
     require('./profile')(app, passport)
     require('./folder')(app, passport)
+    require('./file')(app, passport)
 
 }
